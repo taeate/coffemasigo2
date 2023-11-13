@@ -12,11 +12,14 @@ class Login extends CI_Controller {
     public function index() {
         if ($this->input->post()) {
         
-            $user_id = $this->input->post('user_id');
-            $password = $this->input->post('password');
+            $auth_data = array(
+                'user_id' => $this->input->post('user_id', TRUE),
+                'password' => $this->input->post('password', TRUE),
+            );
     
             // 사용자 인증 시도
-            $user = $this->Login_model->authenticate($user_id, $password);
+            $user = $this->Login_model->authenticate($auth_data);
+
             if ($user) {
                 // 세션 데이터 설정
                 $session_data = array(
