@@ -8,6 +8,7 @@ class Join extends CI_Controller {
         $this->load->database();
         $this->load->helper('url');
 		$this->load->library('form_validation');
+		$this->load->library('session');
 
     }
 
@@ -44,7 +45,7 @@ class Join extends CI_Controller {
 					'username'  => $data['username'],
 					'user_id'   => $data['user_id'],
 					'email'     => $data['email'],
-					'logged_in' => TRUE
+					'is_logged_in' => TRUE
 				]);
 				
 
