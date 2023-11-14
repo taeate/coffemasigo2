@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Post extends CI_Controller {
     public function __construct(){
         parent::__construct();
-        // $this->load->model('article/Post_model');
+        $this->load->model('posts/Post_model');
         $this->load->database();
         $this->load->helper('url');
         $this->load->library('session'); // 세션 라이브러리 로드
@@ -12,8 +12,30 @@ class Post extends CI_Controller {
     
     public function index(){
 
-        $this->load->view('posts/post_list_view');
+
+        $list['get_list'] = $this->Post_model->get_posts();
+
+        $this->load->view('posts/post_list_view',$list);
     
+    }
+
+    public function detail($post_id){
+
+        if (!empty($post_id)){
+
+            $detail_info  = $this->Post_model->find_detail($post_id);
+
+            if ($detail_info){
+
+                $data['detail_info'] = $detail_info;
+
+                $this->load->view('posts/post_detail_view',$data);
+
+            } else {
+
+                echo "찾지못함";
+            }
+        }
     }
 
     

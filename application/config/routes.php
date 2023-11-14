@@ -54,5 +54,8 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['login'] = 'member/Login';
 $route['join'] = 'member/join';
+$route['posts/all'] = 'posts/Post';
 $route['posts'] = 'posts/Post';
-$route['posts/detail/(:num)'] = 'article/Posts/detail/$1';
+$route['posts/free/(:num)'] = 'posts/Post/detail/$1';
+
+

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-gray-400">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
 
 </head>
 <nav class="flex fixed top-0 w-full">
-<div class="navbar bg-gray-700 h-10">
+<div class="navbar bg-gray-700 h-10 relative">
     <div class="navbar-start">
         <div class="dropdown">
         <label tabindex="0" class="btn btn-ghost btn-circle">

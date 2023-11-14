@@ -1,12 +1,16 @@
 <?php $this->load->view('layout/header'); ?>
-<div class="flex-container" style="display: flex; margin: 80px;">
+<!-- <div class="relative">
+        <img class="h-120 w-full fixed" src="/application/views/images/city.jpg" alt="">
+    </div> -->
+<div class="flex-container" style="display: flex; margin: 200px;">
+   
     <!-- 사이드바 -->
-    <div class="m-12">
+    <div class="m-20">
         <?php $this->load->view('layout/sidebar'); ?>
     </div>
     
     <!-- 리스트 페이지 컨텐츠 -->
-    <div class="content m-12" style="flex: 3;">
+    <div class="content m-20" style="flex: 3;">
         <div class="flex flex-col w-full">
         <div class="grid h-40 card bg-base-300 rounded-box place-items-center">검색</div> 
         <!-- <div class="grid h-20 card bg-base-300 rounded-box place-items-center mt-4">랭킹</div> -->
@@ -39,17 +43,20 @@
             
         </div>
     </div>
-        <body class="mt-96">
+        <body class="mt-96  bg-gray-400">
             <!-- 리스트 페이지의 내용 -->
                 <div class="bg-base-100 mt-4">
                     <div class="overflow-x-auto shadow-md">
                             <table class="table">
                                 <!-- head -->
-          
+                                
+                                <?php foreach($get_list as $post): ?>
                                 <tbody>
                                 <!-- row 1 -->
-                                <tr class="border-b border-l border-r border-t">
-                                    <th class="w-12">
+                               
+                                <tr class="border-b border-l border-r border-t hover:bg-gray-200 h-20"  onclick="window.location.href='/posts/free/<?=$post->post_id?>'">
+            
+                                    <th class="w-12" >
                                     <label>
                                         123
                                     </label>
@@ -57,19 +64,21 @@
                                     <td>
                                     <div class="flex items-center gap-3">
                                         <div>
-                                        <div class="font-bold">쿠팡 배송이 엄청 빠르다매</div>
+                                        <div class="font-bold"><?php echo $post->title; ?></div>
                                         <div class="text-sm opacity-50">자유</div>
                                         </div>
                                     </div>
                                     </td>
                                     <td>
-                                        <div>tjdwls3144</div>
+                                        <div><?php echo $post->user_id; ?></div>
                                     </td>
-                                        <td>21</td>
+                                        <td><?php echo $post->views; ?></td>
                                     <th>
-                                        <div class="text-sm">2020-10-31 01:32</div>
+                                        <div class="text-sm"><?php echo $post->create_date; ?></div>
                                     </th>
+                    
                                 </tr>
+                               
                                 <tr class="border-b border-l border-r border-t">
                                     <td>└</td>
                                    
@@ -77,8 +86,8 @@
                                     <div class="flex items-center gap-3">
                                         
                                         <div>
-                                        <div class="font-bold text-gray-400">쿠팡 배송이 엄청 빠르다매 에 대한 답글</div>
-                                        <div class="font-bold mt-1">쿠팡 과대 포장 아닌 이유에 대해</div>
+                                        <div class="font-bold text-gray-400"><?php echo $post->title; ?> 에 대한 답변</div>
+                                        <div class="font-bold mt-1">답변제목입니다.</div>
                                         </div>
                                     </div>
                                     </td>
@@ -90,124 +99,13 @@
                                         <div class="text-sm">2020-10-31 01:32</div>
                                     </th>
                                 </tr>
-                                <tr class="border-b border-l border-r border-t">
-                                    <th class="w-12">
-                                    <label>
-                                        123
-                                    </label>
-                                    </th>
-                                    <td>
-                                    <div class="flex items-center gap-3">
-                                        <div>
-                                        <div class="font-bold">쿠팡 배송이 엄청 빠르다매</div>
-                                        <div class="text-sm opacity-50">자유</div>
-                                        </div>
-                                    </div>
-                                    </td>
-                                    <td>
-                                        <div>tjdwls3144</div>
-                                    </td>
-                                        <td>21</td>
-                                    <th>
-                                        <div class="text-sm">2020-10-31 01:32</div>
-                                    </th>
-                                </tr>
-                                <tr class="border-b border-l border-r border-t">
-                                    <th class="w-12">
-                                    <label>
-                                        123
-                                    </label>
-                                    </th>
-                                    <td>
-                                    <div class="flex items-center gap-3">
-                                        <div>
-                                        <div class="font-bold">쿠팡 배송이 엄청 빠르다매</div>
-                                        <div class="text-sm opacity-50">자유</div>
-                                        </div>
-                                    </div>
-                                    </td>
-                                    <td>
-                                        <div>tjdwls3144</div>
-                                    </td>
-                                        <td>21</td>
-                                    <th>
-                                        <div class="text-sm">2020-10-31 01:32</div>
-                                    </th>
-                                </tr>
-                                <tr class="border-b border-l border-r border-t">
-                                    <th class="w-12">
-                                    <label>
-                                        123
-                                    </label>
-                                    </th>
-                                    <td>
-                                    <div class="flex items-center gap-3">
-                                        <div>
-                                        <div class="font-bold">쿠팡 배송이 엄청 빠르다매</div>
-                                        <div class="text-sm opacity-50">자유</div>
-                                        </div>
-                                    </div>
-                                    </td>
-                                    <td>
-                                        <div>tjdwls3144</div>
-                                    </td>
-                                        <td>21</td>
-                                    <th>
-                                        <div class="text-sm">2020-10-31 01:32</div>
-                                    </th>
-                                </tr>
-                                <tr class="border-b border-l border-r border-t">
-                                    <th class="w-12">
-                                    <label>
-                                        123
-                                    </label>
-                                    </th>
-                                    <td>
-                                    <div class="flex items-center gap-3">
-                                        <div>
-                                        <div class="font-bold">쿠팡 배송이 엄청 빠르다매</div>
-                                        <div class="text-sm opacity-50">자유</div>
-                                        </div>
-                                    </div>
-                                    </td>
-                                    <td>
-                                        <div>tjdwls3144</div>
-                                    </td>
-                                        <td>21</td>
-                                    <th>
-                                        <div class="text-sm">2020-10-31 01:32</div>
-                                    </th>
-                                </tr>
-                                <tr class="border-b border-l border-r border-t">
-                                    <th class="w-12">
-                                    <label>
-                                        123
-                                    </label>
-                                    </th>
-                                    <td>
-                                    <div class="flex items-center gap-3">
-                                        <div>
-                                        <div class="font-bold">쿠팡 배송이 엄청 빠르다매</div>
-                                        <div class="text-sm opacity-50">자유</div>
-                                        </div>
-                                    </div>
-                                    </td>
-                                    <td>
-                                        <div>tjdwls3144</div>
-                                    </td>
-                                        <td>21</td>
-                                    <th>
-                                        <div class="text-sm">2020-10-31 01:32</div>
-                                    </th>
-                                </tr>
-                                
-                                
+     
                                <!-- 끝 -->
                                 </tr>
                                 </tbody>
                                 <!-- foot -->   
                             
-                                
+                                <?php endforeach; ?>
                             </table>
                             <div class="mt-6 mb-6">
                                 <div class="flex justify-center">

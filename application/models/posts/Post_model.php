@@ -5,17 +5,17 @@ class Post_model extends CI_Model {
 
     public function get_posts(){
 
-        $query = $this->db->get('posts');    
+        $query = $this->db->get('post');    
 
         return $query->result();
     }
 
-    public function where_posts($id){
+    public function find_detail($post_id){
 
-        $query = $this->db->get_where('posts',array('id'=> $id));
+        $query = $this->db->get_where('post', array('post_id'=> $post_id));
 
         return $query->row();
-    
     }
+
     
 }
