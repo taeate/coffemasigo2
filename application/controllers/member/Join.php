@@ -105,9 +105,9 @@ class Join extends CI_Controller {
 
 		if (!empty($result)){
 			if($this->input->is_ajax_request()){
-				$reponse = ["status"=> "unavailable"];
+				$response = ["status"=> "unavailable"];
 				$this->output->set_content_type("application/json")
-							->set_output(json_encode($reponse));
+							->set_output(json_encode($response));
 			} else {
 				$this->form_validation->set_message("checkEmail", "이미 사용중인 이메일 입니다.");
 				return FALSE;

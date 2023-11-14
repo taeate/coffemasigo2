@@ -27,12 +27,12 @@
         <a class="btn btn-ghost normal-case text-xl text-white">Cafe Masigo</a>
     </div>
     <div class="navbar-end">
-    <div class="flex text-white">
+    <div class="flex text-white mr-4">
     
         <?php if ($this->session->userdata('is_logged_in')): ?>
-            <p>환영합니다, <?php echo $this->session->userdata('user_id'); ?>님!</p>
+            <p><?php echo $this->session->userdata('user_id'); ?></p>
         <?php else: ?>
-            <p>로그인이 필요합니다.</p>
+            <p>로그인이 필요합니다</p>
         <?php endif; ?>
     
 
@@ -50,7 +50,7 @@
         <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 x-[1] p-2 shadow bg-gray-700 text-white rounded-box w-52">
             <li><a>프로필 변경</a></li>
             <li><a>설정</a></li>
-            <li><a>로그아웃</a></li>
+            <li><a href="<?php echo site_url('member/login/logout'); ?>">로그아웃</a></li>
         </ul>
         </div>
     
