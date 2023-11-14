@@ -17,22 +17,25 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" class="bg-white" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
         </label>
         <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52">
-            <li><a>전체 글보기</a></li>
+            <li>
+                <a href="/posts">전체 글보기</a>
+            </li>
             <li><a>랭킹</a></li>
             <li><a>글작성</a></li>
         </ul>
         </div>
     </div>
     <div class="navbar-center">
-        <a class="btn btn-ghost normal-case text-xl text-white">Cafe Masigo</a>
+        <a href="/posts" class="btn btn-ghost normal-case text-xl text-white">Cafe Masigo</a>
     </div>
     <div class="navbar-end">
     <div class="flex text-white mr-4">
     
         <?php if ($this->session->userdata('is_logged_in')): ?>
-            <p><?php echo $this->session->userdata('user_id'); ?></p>
+            <p><?php echo $this->session->userdata('username'); ?></p>
         <?php else: ?>
-            <p>로그인이 필요합니다</p>
+            <a class="hover-underline" href="/login">GUEST</a>
+            
         <?php endif; ?>
     
 
@@ -50,7 +53,11 @@
         <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 x-[1] p-2 shadow bg-gray-700 text-white rounded-box w-52">
             <li><a>프로필 변경</a></li>
             <li><a>설정</a></li>
+            <?php if ($this->session->userdata('is_logged_in')): ?>
             <li><a href="<?php echo site_url('member/login/logout'); ?>">로그아웃</a></li>
+            <?php else: ?>
+            <li><a href="<?php echo site_url('member/login'); ?>">로그인</a></li>
+        <?php endif; ?>
         </ul>
         </div>
     
