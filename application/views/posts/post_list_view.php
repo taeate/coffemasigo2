@@ -1,16 +1,14 @@
 <?php $this->load->view('layout/header'); ?>
-<!-- <div class="relative">
-        <img class="h-120 w-full fixed" src="/application/views/images/city.jpg" alt="">
-    </div> -->
-<div class="flex-container" style="display: flex; margin: 200px;">
+
+<div class="flex-container" style="display: flex; margin: 400px;">
    
-    <!-- 사이드바 -->
-    <div class="m-20">
-        <?php $this->load->view('layout/sidebar'); ?>
-    </div>
+<!-- 사이드바 -->
+<div class="w-80">
+    <?php $this->load->view('layout/sidebar'); ?>
+</div>
     
     <!-- 리스트 페이지 컨텐츠 -->
-    <div class="content m-20" style="flex: 3;">
+    <div class="content ml-8 z-10" style="flex: 3;">
 
         <div name="top-box" class="flex flex-col w-full">
             <div name="search-nav" class="h-auto bg-base-100 place-items-center">
@@ -154,13 +152,12 @@
                                
                                 <tr class="border-b border-l border-r border-t hover:bg-gray-200 h-20"  onclick="window.location.href='/posts/free/<?=$post->post_id?>'">
             
-                                    <th class="w-12" >
-                                    <label>
-                                        123
-                                    </label>
+                                    <th class="w-12">
+                                        <label for="" class="ml-7">▲</label>
+                                        <div class="ml-4">1233</div>
                                     </th>
                                     <td>
-                                    <div class="flex items-center gap-3">
+                                    <div class="flex items-center gap-3 ml-4">
                                         <div>
                                         <div class="font-bold"><?php echo $post->title; ?></div>
                                         <div class="text-sm opacity-50">자유</div>
@@ -176,16 +173,18 @@
                                     </th>
                     
                                 </tr>
-                               
-                                <tr class="border-b border-l border-r border-t">
+                                <?php foreach($get_answer_list as $answer_post): ?>
+                                    <?php if($answer_post->parent_post_id == $post->post_id): ?>
+
+                                    <tr name="answer-title" class="border-b border-l border-r border-t">
                                     <td>└</td>
                                    
                                     <td>
                                     <div class="flex items-center gap-3">
                                         
                                         <div>
-                                        <div class="font-bold text-gray-400"><?php echo $post->title; ?> 에 대한 답변</div>
-                                        <div class="font-bold mt-1">답변제목입니다.</div>
+                                        <div class="font-bold text-gray-400"><?= $answer_post->parent_title; ?> 에 대한 답변</div>
+                                        <div class="font-bold mt-1"><?= $answer_post->title; ?></div>
                                         </div>
                                     </div>
                                     </td>
@@ -197,6 +196,11 @@
                                         <div class="text-sm">2020-10-31 01:32</div>
                                     </th>
                                 </tr>
+                                    
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                               
+                                
      
                                <!-- 끝 -->
                                 </tr>
@@ -204,6 +208,8 @@
                                 <!-- foot -->   
                             
                                 <?php endforeach; ?>
+
+                        
                             </table>
                             <div class="mt-6 mb-6">
                                 <div class="flex justify-center">

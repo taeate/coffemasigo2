@@ -1,12 +1,12 @@
 <?php $this->load->view('layout/header'); ?>
-<div class="flex-container" style="display: flex; margin: 200px;">
+<div class="flex-container" style="display: flex; margin: 400px;">
     <!-- 사이드바 -->
-    <div class="m-20">
+    <div class="w-80">
         <?php $this->load->view('layout/sidebar'); ?>
     </div>
-    <div class="content m-20" style="flex: 3;">
+    <div class="content ml-8" style="flex: 3;">
         <div class="flex flex-col w-full ">
-            <div class="h-auto card bg-base-100">
+            <div class="h-auto bg-base-100">
                 <div name="title" class="mt-8 ml-12 mr-12">
                     
                     <?php if ($detail_info) : ?>
@@ -41,19 +41,8 @@
                     <div class="m-12">
                         
                         <?php echo $content ?>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit nam inventore quibusdam deleniti rem porro, ab, repellat iure, aliquid excepturi sint. A doloribus maiores ratione blanditiis, assumenda excepturi vero qui.
-                        Vel praesentium eius unde error voluptas quod hic, aspernatur quae dolorum iusto inventore maxime nisi ipsa vero. Aut fugiat illo voluptatem sapiente ea, ad dicta vero aperiam nobis laborum! Nobis!
-                        Ipsum nulla praesentium veniam alias quas facilis quo repellendus itaque, adipisci corporis cumque beatae at. Vitae illum facilis et ullam quod aliquam eveniet similique, consectetur possimus necessitatibus qui, voluptates pariatur.
-                        Architecto omnis fugiat quod esse aut possimus perspiciatis nobis. Vitae necessitatibus dolorem voluptas unde rerum incidunt? Soluta, magnam fugit! Quidem dolore molestiae veniam eaque quaerat voluptates ab ipsam vel voluptas.
-                        Eaque molestias sequi delectus ad laudantium laboriosam dolore nulla, dolorem esse enim natus deleniti suscipit quisquam ea porro aspernatur commodi quam hic neque harum explicabo voluptatibus, blanditiis id facilis. Quod.
-                        Architecto accusamus officiis nisi. Sint itaque voluptatibus sit ipsam placeat soluta provident quod ullam nemo commodi reprehenderit voluptas, natus maiores. Perspiciatis iste qui id temporibus, placeat fugiat officia obcaecati repellat!
-                        Impedit deleniti ducimus similique nam magni ipsum dolor eius, enim voluptatem reprehenderit. Minus qui quas ipsa nisi corrupti minima quos ipsum libero maiores, perferendis ea velit delectus. Rerum, architecto sit.
-                        Aperiam delectus libero facere vero ipsum sapiente officia at necessitatibus. Repudiandae dolore, minima harum ullam odit aspernatur deleniti quos voluptatum beatae. Illo facere unde ea molestias temporibus soluta sint voluptates.
-                        Voluptates officia, tempore iste minus possimus rem explicabo. Iure voluptate magnam rerum cupiditate harum natus tenetur tempore atque accusantium quisquam eos nam sequi ipsa accusamus, ut expedita. Est, saepe excepturi?
-                        Similique officia beatae aut. Harum voluptatibus, soluta, nobis eius et incidunt atque nostrum, quae qui molestiae animi ex minus repellendus nisi praesentium? Eos voluptatem modi quam eligendi dolorum quas nesciunt?
-                        Odit iste, laudantium beatae accusantium voluptatibus obcaecati maxime quae omnis laborum cum optio tenetur pariatur culpa, velit nam minus aliquam! Tempora optio blanditiis delectus quam minus perspiciatis consequatur sapiente adipisci!
-                        Id, voluptas cupiditate? Nisi adipisci commodi omnis deserunt consectetur nesciunt saepe aliquam laborum. Eius dolor rem saepe officia reiciendis facere eos? Consequuntur obcaecati nam, non odio quod et in blanditiis.
-                        Explicabo optio minus odit fuga repellat tenetur velit modi. Veniam, qui, nulla odio repellendus fugit quidem autem dolores nemo libero iusto voluptatum magnam culpa quas ipsum id eligendi explicabo ut.
+                        
+                       
                     </div>
                 </div>
                 <hr class="mr-12 ml-12">
@@ -68,7 +57,7 @@
                     
                     <div name="answer-btn" class="flex justify-between ml-12 mr-12 mt-4 mb-4">
                         <div class="">
-                            <button class="bg-gray-500 text-white w-28 h-12">답글쓰기</button>
+                            <a href="/posts/write/answer_post/<?= $post_id ?>" class="btn bg-gray-500 text-white w-28 h-12">답글쓰기</a>
                         </div>
                         <div class="">
                         <button class="bg-gray-500 text-white w-28 h-12">공유하기</button>
@@ -78,7 +67,7 @@
             </div>
             <div class="flex flex-col w-full mt-4 ">
                 <div name="commnet-name"class="h-auto card bg-base-100">
-                    <div class="bg-base-200 rounded-tl-xl rounded-tr-xl">
+                    <div class="bg-base-200 ">
                         <div class="flex ml-8 mt-4 text-lg">
                             <div class="">
                                 댓글

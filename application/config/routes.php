@@ -57,5 +57,7 @@ $route['join'] = 'member/join';
 $route['posts/all'] = 'posts/Post';
 $route['posts'] = 'posts/Post';
 $route['posts/free/(:num)'] = 'posts/Post/detail/$1';
+$route['write/(:num)'] = 'posts/write/answer_post/$1';
+
 
 

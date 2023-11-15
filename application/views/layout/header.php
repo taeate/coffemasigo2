@@ -9,7 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
-<nav class="flex fixed top-0 w-full">
+<nav class="flex fixed top-0 w-full z-50">
 <div class="navbar bg-gray-700 h-10 relative">
     <div class="navbar-start">
         <div class="dropdown">

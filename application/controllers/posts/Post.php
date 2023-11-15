@@ -10,14 +10,15 @@ class Post extends CI_Controller {
         $this->load->library('session'); // 세션 라이브러리 로드
     }
     
-    public function index(){
+    public function index() {
 
-
-        $list['get_list'] = $this->Post_model->get_posts();
-
-        $this->load->view('posts/post_list_view',$list);
+        $data['get_list'] = $this->Post_model->get_posts();
+        
+        $data['get_answer_list'] = $this->Post_model->get_answer_posts();
     
+        $this->load->view('posts/post_list_view', $data);
     }
+    
 
     public function detail($post_id){
 
