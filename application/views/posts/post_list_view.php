@@ -160,7 +160,10 @@
                                     <div class="flex items-center gap-3 ml-4">
                                         <div>
                                         <div class="font-bold"><?php echo $post->title; ?></div>
-                                        <div class="text-sm opacity-50">자유</div>
+                                            <div class="flex mt-1">
+                                                <div class="text-sm opacity-50">채널이름</div>
+                                                <a class="view-replies ml-2 text-red-500 hover:text-blue-500 hover:font-bold hover:cursor-pointer" data-post-id="<?=$post->post_id?>">답글보기</a>
+                                            </div>
                                         </div>
                                     </div>
                                     </td>
@@ -176,7 +179,7 @@
                                 <?php foreach($get_answer_list as $answer_post): ?>
                                     <?php if($answer_post->parent_post_id == $post->post_id): ?>
 
-                                    <tr name="answer-title" class="border-b border-l border-r border-t">
+                                    <tr name="answer-title" class="answer-row hidden border-b border-l border-r border-t hover:bg-gray-200 h-20" data-parent-post-id="<?=$answer_post->parent_post_id?>">
                                     <td>└</td>
                                    
                                     <td>
@@ -185,11 +188,13 @@
                                         <div>
                                         <div class="font-bold text-gray-400"><?= $answer_post->parent_title; ?> 에 대한 답변</div>
                                         <div class="font-bold mt-1"><?= $answer_post->title; ?></div>
+                                        <a class="view-replies ml-2 text-red-500 hover:text-blue-500 hover:font-bold hover:cursor-pointer" data-post-id="<?=$answer_post->post_id?>">답글보기</a>
+                                        
                                         </div>
                                     </div>
                                     </td>
                                     <td>
-                                        <div>tjdwls3144</div>
+                                        <div><?= $answer_post->user_id ?></div>
                                     </td>
                                         <td>21</td>
                                     <th>
@@ -227,3 +232,27 @@
         </body>
     </div>
 </div>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function () {
+    
+    const viewRepliesButtons = document.querySelectorAll('.view-replies'); // 답글보기 class
+
+    viewRepliesButtons.forEach(function (button) {
+
+        button.addEventListener('click', function (event) {
+
+            event.stopPropagation();
+            
+            const postId = this.getAttribute('data-post-id');
+
+            const answerRows = document.querySelectorAll(`.answer-row[data-parent-post-id="${postId}"]`);
+            
+            answerRows.forEach(row => {
+                row.classList.toggle('hidden');
+            });
+        });
+    });
+});
+</script>

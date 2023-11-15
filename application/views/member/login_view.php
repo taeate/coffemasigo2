@@ -25,7 +25,7 @@
         <label class="label mb-3">
             <a href="#" class="label-text-alt link link-hover text-white">아이디 찾기</a>
             <a href="#" class="label-text-alt link link-hover text-white">비밀번호 찾기</a>
-            <a href="<?php echo site_url('member/join'); ?>" class="label-text-alt link link-hover text-white">회원가입</a>
+            <a href="<?php echo site_url('join'); ?>" class="label-text-alt link link-hover text-white">회원가입</a>
         </label>
         <button type="submit" class="btn btn-primary bg-blue-600">로그인</button>
     </div>

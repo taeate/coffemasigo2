@@ -54,9 +54,9 @@
             <li><a>프로필 변경</a></li>
             <li><a>설정</a></li>
             <?php if ($this->session->userdata('is_logged_in')): ?>
-            <li><a href="<?php echo site_url('member/login/logout'); ?>">로그아웃</a></li>
+            <li><a href="<?php echo site_url('login/logout'); ?>">로그아웃</a></li>
             <?php else: ?>
-            <li><a href="<?php echo site_url('member/login'); ?>">로그인</a></li>
+            <li><a href="<?php echo site_url('login'); ?>">로그인</a></li>
         <?php endif; ?>
         </ul>
         </div>

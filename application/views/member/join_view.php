@@ -121,7 +121,7 @@ $(document).ready(function(){
                   var email = $('#email').val();
                   if(email) {
                       $.ajax({
-                          url: 'member/join/checkEmail', // Controller 경로를 확인하세요.
+                          url: '/member/join/checkEmail', 
                           type: 'POST',
                           data: {'email': email},
                           dataType: 'json',
@@ -130,7 +130,10 @@ $(document).ready(function(){
                                   $('#emailStatus_failed').text('사용 불가능');
                                   $('#emailStatus_success').text('');
                                   isEmailAvailable = false;
-                              } else {
+                              }  if (!isValidEmail(email)) {
+                                  $('#emailStatus_failed').text('불가능한 이메일');
+                                  $('#emailStatus_success').text('');
+                              }else {
                                   $('#emailStatus_success').text('사용 가능');
                                   $('#emailStatus_failed').text('');
                                   isEmailAvailable = true;
@@ -187,12 +190,14 @@ $(document).ready(function(){
             isValid = true;
           }
 
+          console.log("이메일 체크 전");
           // 이메일 형식이 유효한지 확인
           if (!isValidEmail(email)) {
               isValid = false;
               $('#email_error').text('유효한 이메일 주소를 입력해주세요.');
           }
 
+          console.log("이메일 체크 후");
           // 이름이 비어있는지
           if (username == ""){
             isValid = false;
