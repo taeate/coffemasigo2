@@ -16,22 +16,74 @@
                     <?php if ($post_data) : ?>
                         <?php $post_id = $post_data->post_id; ?>
                         <?php $title = $post_data->title; ?>
-                        <div class="text-2xl ">
-                               <?php echo $title ?> 에 대한 답변 글 작성
-                        </div>
-                       
+                        
+                        <div class="flex justify-normal mb-2">
+                            <div class="flex flex-none">
+                                <div class="mt-2 text-2xl">
+                                    <?php echo $title ?> 에 대한 답변 글 작성
+                                </div>
+                     
+                            </div>
+                            <div class="grow"></div>
+                            <div class="flex flex-none">
 
-                        <form method="POST" class="mt-4">
+                            <div class="form-control mr-4">
+                                <label class="cursor-pointer label">
+                                    <input type="checkbox" checked="checked" class="checkbox checkbox-accent" />
+                                    <span class="label-text ml-1">공지로등록</span>
+                                </label>
+                            </div>
+
+                            <div class="form-control ml-4">
+                                <label class="cursor-pointer label">
+                                    <input type="checkbox" checked="checked" class="checkbox checkbox-accent" />
+                                    <span class="label-text ml-1">전체공개</span>
+                                </label>
+                            </div>
+
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <select class="select select-bordered w-28 h-4 max-w-xs mt-2">
+                            <option disabled selected>채널선택</option>
+                            <option>자유</option>
+                            <option>PYTHON</option>
+                            <option>JAVA</option>
+                            <option>PHP</option>
+                            <option>C++</option>
+                            </select>
+                        </div>
+
+                        <form method="POST" class="mt-8">
                             <div class="mb-6">
-                                <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">제목</label>
+                                <label for="title" class="block mb-2 font-bold text-gray-900 dark:text-white text-lg">제목</label>
                                 <input type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                             <div class="mb-6">
-                                <label for="content" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">내용</label>
-                                <textarea name="content" id="content" class="block w-full h-24 p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+                
+
+                                <label for="content" class="block mb-2 font-bold text-gray-900 dark:text-white text-lg">내용</label>
+                               
+                                <textarea class="h-36" type="text" name="content" id="content"></textarea>
+
+                                
                             </div>
-                            <button type="submit" class="btn btn-primary w-24 bg-gray-800">작성</button>
+
+                            <div class="flex justify-between">
+                                <div class="mt-2">
+                                    <div class="ml-2 mb-2">* 파일 크기는 250kb 이하여야 합니다.</div>
+                                    <input type="file" class="file-input file-input-bordered w-full max-w-xs" />
+                                </div>
+                                <div>
+                                    <button type="submit" class="bg-gray-500 text-white w-24 h-12 rounded">취소</button>
+                                    <button type="submit" class="bg-gray-500 text-white w-24 h-12 rounded">작성</button>
+                                </div>
+                            </div>
+
+                           
                         </form>
+
+
                     <?php else: ?>
                         <div class="flex justify-normal mb-2">
                             <div class="flex flex-none">
@@ -74,13 +126,7 @@
                                 <input type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                             <div class="mb-6">
-                                <!-- 에디터를 적용할 요소 (컨테이너) -->
-                                    
-                                     <!-- 에디터 소스 가져오기 -->
-                                     <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
-                                    
-                                    <!-- 데이터 ui 구현한  css 소스 -->
-                                    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+                
 
                                 <label for="content" class="block mb-2 font-bold text-gray-900 dark:text-white text-lg">내용</label>
                                
@@ -145,5 +191,5 @@
 	.ck-editor__editable {
 	    min-height: 200px;
 	}
-	</style>
+</style>
  
