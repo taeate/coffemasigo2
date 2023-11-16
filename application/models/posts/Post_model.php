@@ -4,13 +4,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Post_model extends CI_Model {
 
     public function get_posts(){
-
-        $this->db->where('parent_post_id',null);
-
-        $query = $this->db->get('post');    
-
+      
+        $this->db->select('*');
+        $this->db->where('delete_status', FALSE);
+        $this->db->where('parent_post_id', null);
+        $query = $this->db->get('post');
         return $query->result();
+
+
     }
+    
 
     public function find_detail($post_id){
 
@@ -61,5 +64,11 @@ class Post_model extends CI_Model {
             return array();
         }
 
+    }
+
+    public function count_comment($post_id){
+        $this->db->where('post_id', $post_id);
+        $this->db->from('comment');;
+        return $this->db->count_all_results();
     }
 }

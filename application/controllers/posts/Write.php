@@ -62,6 +62,38 @@ class Write extends CI_Controller {
                 }
             }
         }
+
+    
+    }
+    public function post_edit($post_id){
+
+        if (!empty($post_id)){
+
+            $data['before_data'] = $this->Write_model->get_before_post($post_id);
+
+            $this->load->view('posts/post_edit_view', $data);
+        }
+
+        if($this->input->post()){
+
+            $title = $this->input->post('title');
+            $content = $this->input->post('content');
+
+            $this->Write_model->edit_post($post_id, $title, $content);
+
+            redirect('/posts/free/'.$post_id);
+        
+        }
+
+        // $this->load->view("posts/post_edit_view");
+    }
+
+    public function post_delete($post_id){
+        
+        if (!empty($post_id)) {
+            $this->Write_model->delete_post($post_id);
+            redirect('posts');
+        }
     }
 
 

@@ -11,7 +11,7 @@ class Post extends CI_Controller {
     }
     
     public function index() {
-
+        
         $data['get_list'] = $this->Post_model->get_posts();
 
         $data['get_answer_list'] = $this->Post_model->get_answer_posts();
@@ -24,6 +24,10 @@ class Post extends CI_Controller {
         $data = array();
     
         if (!empty($post_id)) {
+
+            // 댓글수
+            $data['comments_count'] = $this->Post_model->count_comment($post_id);
+
             // 게시물 세부 정보 가져오기
             $detail_info  = $this->Post_model->find_detail($post_id);
             if ($detail_info) {

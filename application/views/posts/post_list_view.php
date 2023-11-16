@@ -145,75 +145,65 @@
                     <div class="overflow-x-auto shadow-md">
                             <table class="table">
                                 <!-- head -->
-                                
-                                <?php foreach($get_list as $post): ?>
                                 <tbody>
-                                <!-- row 1 -->
-                               
-                                <tr class="border-b border-l border-r border-t hover:bg-gray-200 h-20"  onclick="window.location.href='/posts/free/<?=$post->post_id?>'">
-            
-                                    <th class="w-12">
-                                        <label for="" class="ml-7">▲</label>
-                                        <div class="ml-4">1233</div>
-                                    </th>
-                                    <td>
-                                    <div class="flex items-center gap-3 ml-4">
-                                        <div>
-                                        <div class="font-bold"><?php echo $post->title; ?></div>
-                                            <div class="flex mt-1">
-                                                <div class="text-sm opacity-50">채널이름</div>
-                                                <a class="view-replies ml-2 text-red-500 hover:text-blue-500 hover:font-bold hover:cursor-pointer" data-post-id="<?=$post->post_id?>">답글보기</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </td>
-                                    <td>
-                                        <div><?php echo $post->user_id; ?></div>
-                                    </td>
-                                        <td><?php echo $post->views; ?></td>
-                                    <th>
-                                        <div class="text-sm"><?php echo $post->create_date; ?></div>
-                                    </th>
-                    
-                                </tr>
-                                <?php foreach($get_answer_list as $answer_post): ?>
-                                    <?php if($answer_post->parent_post_id == $post->post_id): ?>
-
-                                    <tr name="answer-title" class="answer-row hidden border-b border-l border-r border-t hover:bg-gray-200 h-20" data-parent-post-id="<?=$answer_post->parent_post_id?>" onclick="window.location.href='/posts/free/<?=$answer_post->post_id?>'">
-                                    <td>└</td>
-                                   
-                                    <td>
-                                    <div class="flex items-center gap-3">
-                                        
-                                        <div>
-                                        <div class="font-bold text-gray-400"><?= $answer_post->parent_title; ?> 에 대한 답변</div>
-                                        <div class="font-bold mt-1"><?= $answer_post->title; ?></div>
-                                        <a class="view-replies ml-2 text-red-500 hover:text-blue-500 hover:font-bold hover:cursor-pointer" data-post-id="<?=$answer_post->post_id?>">답글보기</a>
-                                        
-                                        </div>
-                                    </div>
-                                    </td>
-                                    <td>
-                                        <div><?= $answer_post->user_id ?></div>
-                                    </td>
-                                        <td>21</td>
-                                    <th>
-                                        <div class="text-sm">2020-10-31 01:32</div>
-                                    </th>
-                                </tr>
-                                    
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                               
+                                <?php foreach($get_list as $post): ?>
                                 
-     
-                               <!-- 끝 -->
-                                </tr>
-                                </tbody>
-                                <!-- foot -->   
-                            
-                                <?php endforeach; ?>
+                                  
+                                        <!-- 메인 게시물 -->
+                                        <tr class="border-b border-l border-r border-t hover:bg-gray-200 h-20" onclick="window.location.href='/posts/free/<?=$post->post_id?>'">
+                                            <th class="w-12">
+                                                <label for="" class="ml-7">▲</label>
+                                                <div class="ml-4">1233</div>
+                                            </th>
+                                            <td>
+                                                <div class="flex items-center gap-3 ml-4">
+                                                    <div>
+                                                        <div class="font-bold"><?php echo $post->title; ?> [5]</div>
+                                                        <div class="flex mt-1">
+                                                            <div class="text-sm opacity-50">채널이름</div>
+                                                            <a class="view-replies ml-2 text-red-500 hover:text-blue-500 hover:font-bold hover:cursor-pointer" data-post-id="<?=$post->post_id?>">답글보기</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div><?php echo $post->user_id; ?></div>
+                                            </td>
+                                            <td><?php echo $post->views; ?></td>
+                                            <th>
+                                                <div class="text-sm"><?php echo $post->create_date; ?></div>
+                                            </th>
+                                        </tr>
 
+                                        <!-- 관련 답변 게시물 -->
+                                        <?php foreach($get_answer_list as $answer_post): ?>
+                                            <?php if($answer_post->parent_post_id == $post->post_id): ?>
+                                                <tr name="answer-title" class="answer-row hidden border-b border-l border-r border-t hover:bg-gray-200 h-20" data-parent-post-id="<?=$answer_post->parent_post_id?>" onclick="window.location.href='/posts/free/<?=$answer_post->post_id?>'">
+                                                    <td>└</td>
+                                                    <td>
+                                                        <div class="flex items-center gap-3">
+                                                            <div>
+                                                                <div class="font-bold text-gray-400"><?= $answer_post->parent_title; ?> 에 대한 답변</div>
+                                                                <div class="font-bold mt-1"><?= $answer_post->title; ?></div>
+                                                                <a class="view-replies ml-2 text-red-500 hover:text-blue-500 hover:font-bold hover:cursor-pointer" data-post-id="<?=$answer_post->post_id?>">답글보기</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div><?= $answer_post->user_id ?></div>
+                                                    </td>
+                                                    <td>21</td>
+                                                    <th>
+                                                        <div class="text-sm">2020-10-31 01:32</div>
+                                                    </th>
+                                                </tr>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                  
+                                
+                            <?php endforeach; ?>
+
+                            </tbody>
                         
                             </table>
                             <div class="mt-6 mb-6">
