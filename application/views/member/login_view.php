@@ -13,14 +13,18 @@
         <label class="label">
             <span class="label-text text-white">ID</span>
         </label>
-        <input type="text" name="user_id" placeholder="아이디" class="input input-bordered bg-gray-600 text-white" required />
+        <input type="text" name="user_id" placeholder="아이디" class="input input-bordered bg-gray-600 text-white"  value="<?php echo set_value('user_id'); ?>"/>
     </div>
     <div class="form-control">
         <label class="label">
             <span class="label-text text-white">Password</span>
         </label>
-        <input type="password" name="password" placeholder="비밀번호" class="input input-bordered bg-gray-600 text-white" required />
+        <input type="password" name="password" placeholder="비밀번호" class="input input-bordered bg-gray-600 text-white" value="<?php echo set_value('password'); ?>" />
     </div>
+    <?php if($this->session->flashdata('error')): ?>
+    <p class="text-red-500 ml-1"><?php echo $this->session->flashdata('error'); ?></p>
+    <?php endif; ?>
+    <?php echo validation_errors(); ?>
     <div class="form-control mt-6">
         <label class="label mb-3">
             <a href="#" class="label-text-alt link link-hover text-white">아이디 찾기</a>

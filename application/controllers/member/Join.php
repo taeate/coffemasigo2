@@ -40,13 +40,6 @@ class Join extends CI_Controller {
 					'password_hash' => $hashed_password
 				];
 
-				// 세션 데이터 설정
-				$this->session->set_userdata([
-					'username'  => $data['username'],
-					'user_id'   => $data['user_id'],
-					'email'     => $data['email'],
-					'is_logged_in' => TRUE
-				]);
 				
 
 				$this->Join_model->create_user($data);

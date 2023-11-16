@@ -13,7 +13,7 @@ class Post extends CI_Controller {
     public function index() {
 
         $data['get_list'] = $this->Post_model->get_posts();
-        
+
         $data['get_answer_list'] = $this->Post_model->get_answer_posts();
     
         $this->load->view('posts/post_list_view', $data);
@@ -39,6 +39,7 @@ class Post extends CI_Controller {
         }
     }
 
+    
     
 }
 ?>

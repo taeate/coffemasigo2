@@ -179,7 +179,7 @@
                                 <?php foreach($get_answer_list as $answer_post): ?>
                                     <?php if($answer_post->parent_post_id == $post->post_id): ?>
 
-                                    <tr name="answer-title" class="answer-row hidden border-b border-l border-r border-t hover:bg-gray-200 h-20" data-parent-post-id="<?=$answer_post->parent_post_id?>">
+                                    <tr name="answer-title" class="answer-row hidden border-b border-l border-r border-t hover:bg-gray-200 h-20" data-parent-post-id="<?=$answer_post->parent_post_id?>" onclick="window.location.href='/posts/free/<?=$answer_post->post_id?>'">
                                     <td>└</td>
                                    
                                     <td>

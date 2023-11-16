@@ -20,6 +20,7 @@ class Post_model extends CI_Model {
     }
 
     public function get_answer_posts() {
+
         $this->db->select('post.*, parent.title as parent_title');
         $this->db->from('post');
         $this->db->join('post as parent', 'post.parent_post_id = parent.post_id', 'left');
