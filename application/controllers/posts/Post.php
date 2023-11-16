@@ -22,6 +22,7 @@ class Post extends CI_Controller {
 
     public function detail($post_id){
 
+
         if (!empty($post_id)){
 
             $detail_info  = $this->Post_model->find_detail($post_id);

@@ -1,9 +1,12 @@
+
 <?php $this->load->view('layout/header'); ?>
+
 <div class="flex-container" style="display: flex; margin: 400px;">
     <!-- 사이드바 -->
     <div class="w-80">
         <?php $this->load->view('layout/sidebar'); ?>
     </div>
+    <!-- <body class="mt-96"> -->
     <div class="content ml-8" style="flex: 3;">
         <div class="flex flex-col w-full ">
             <div class="h-auto bg-base-100">
@@ -30,66 +33,117 @@
                             <button type="submit" class="btn btn-primary w-24 bg-gray-800">작성</button>
                         </form>
                     <?php else: ?>
-                        <div class="flex justify-normal mb-4">
+                        <div class="flex justify-normal mb-2">
                             <div class="flex flex-none">
-                                <div class="mt-4 text-xl">게시글작성</div>
+                                <div class="mt-2 text-2xl font-bold">게시글작성</div>
                      
                             </div>
                             <div class="grow"></div>
                             <div class="flex flex-none">
-        
-                                <div class="mt-4 ml-8">공지로등록</div>
-                                <div class="mt-4 ml-8">전체공개</div>
+
+                            <div class="form-control mr-4">
+                                <label class="cursor-pointer label">
+                                    <input type="checkbox" checked="checked" class="checkbox checkbox-accent" />
+                                    <span class="label-text ml-1">공지로등록</span>
+                                </label>
+                            </div>
+
+                            <div class="form-control ml-4">
+                                <label class="cursor-pointer label">
+                                    <input type="checkbox" checked="checked" class="checkbox checkbox-accent" />
+                                    <span class="label-text ml-1">전체공개</span>
+                                </label>
+                            </div>
+
                             </div>
                         </div>
-                        <div>
-                            채널선택
+                        <div class="mt-2">
+                            <select class="select select-bordered w-28 h-4 max-w-xs mt-2">
+                            <option disabled selected>채널선택</option>
+                            <option>자유</option>
+                            <option>PYTHON</option>
+                            <option>JAVA</option>
+                            <option>PHP</option>
+                            <option>C++</option>
+                            </select>
                         </div>
 
-                        <form method="POST">
+                        <form method="POST" class="mt-8">
                             <div class="mb-6">
-                                <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">제목</label>
+                                <label for="title" class="block mb-2 font-bold text-gray-900 dark:text-white text-lg">제목</label>
                                 <input type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                             <div class="mb-6">
-                                <label for="content" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">내용</label>
-                                <textarea name="content" id="content" class="block w-full h-24 p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+                                <!-- 에디터를 적용할 요소 (컨테이너) -->
+                                    
+                                     <!-- 에디터 소스 가져오기 -->
+                                     <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+                                    
+                                    <!-- 데이터 ui 구현한  css 소스 -->
+                                    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+
+                                <label for="content" class="block mb-2 font-bold text-gray-900 dark:text-white text-lg">내용</label>
+                               
+                                <textarea class="h-36" type="text" name="content" id="content"></textarea>
+
+                                
                             </div>
-                            <button type="submit" class="btn btn-primary w-24 bg-gray-800">작성</button>
+
+                            <div class="flex justify-between">
+                                <div class="mt-2">
+                                    <div class="ml-2 mb-2">* 파일 크기는 250kb 이하여야 합니다.</div>
+                                    <input type="file" class="file-input file-input-bordered w-full max-w-xs" />
+                                </div>
+                                <div>
+                                    <button type="submit" class="bg-gray-500 text-white w-24 h-12 rounded">취소</button>
+                                    <button type="submit" class="bg-gray-500 text-white w-24 h-12 rounded">작성</button>
+                                </div>
+                            </div>
+
+                           
                         </form>
 
                     <?php endif ?>
 
                 </div>
-                <hr class="mr-12 ml-12">
+
                 <div name="content " class="">
                     <div class="m-12">
                         
-                        
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit nam inventore quibusdam deleniti rem porro, ab, repellat iure, aliquid excepturi sint. A doloribus maiores ratione blanditiis, assumenda excepturi vero qui.
-                        Vel praesentium eius unde error voluptas quod hic, aspernatur quae dolorum iusto inventore maxime nisi ipsa vero. Aut fugiat illo voluptatem sapiente ea, ad dicta vero aperiam nobis laborum! Nobis!
-                        Ipsum nulla praesentium veniam alias quas facilis quo repellendus itaque, adipisci corporis cumque beatae at. Vitae illum facilis et ullam quod aliquam eveniet similique, consectetur possimus necessitatibus qui, voluptates pariatur.
-                        Architecto omnis fugiat quod esse aut possimus perspiciatis nobis. Vitae necessitatibus dolorem voluptas unde rerum incidunt? Soluta, magnam fugit! Quidem dolore molestiae veniam eaque quaerat voluptates ab ipsam vel voluptas.
+
                        
                     </div>
                 </div>
-                <hr class="mr-12 ml-12">
-                <div name="button-area" >
-    
-                    <div name="answer-btn" class="flex justify-between ml-12 mr-12 mt-4 mb-4">
-                        <div class="">
-                            <button class="bg-gray-500 text-white w-28 h-12">첨부파일</button>
-                        </div>
-                        <div class="">
-                        <button class="bg-gray-500 text-white w-28 h-12">취소</button>
-                        <button class="bg-gray-500 text-white w-28 h-12">작성완료</button>
-                        </div>
-                    </div>
-                </div>
+              
+               
             </div>
            
         </div>
-        <body class="mt-96">
+        
+ 
+
+                         
+
+                        
+
+
         </body>
     </div>
 </div>
+
+
+<script>
+  ClassicEditor.create( document.querySelector( '#content' ), {
+    
+    language: "ko"
+  } )
+</script>
+<style>
+	.ck.ck-editor {
+    	
+	}
+	.ck-editor__editable {
+	    min-height: 200px;
+	}
+	</style>
+ 

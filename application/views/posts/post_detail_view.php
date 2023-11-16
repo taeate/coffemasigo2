@@ -9,6 +9,7 @@
             <div class="h-auto bg-base-100">
                 <div name="title" class="mt-8 ml-12 mr-12">
                     
+                   
                     <?php if ($detail_info) : ?>
                         <?php $post_id = $detail_info->post_id; ?>
                         <?php $title = $detail_info->title; ?>
