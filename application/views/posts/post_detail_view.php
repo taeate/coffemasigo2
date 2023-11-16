@@ -66,23 +66,27 @@
                     </div>
                 </div>
             </div>
+
+               
+
             <div class="flex flex-col w-full mt-4 ">
                 <div name="commnet-name"class="h-auto card bg-base-100">
                     <div class="bg-base-200 ">
                         <div class="flex ml-8 mt-4 text-lg">
                             <div class="">
                                 댓글
+                                
                             </div>
                             <div class="flex items-center justify-center text-sm ml-2">
                                 총 3개
                             </div>
                         
                         </div>
-                        <form class="ml-8 mr-8 mt-2">
+                        <form class="ml-8 mr-8 mt-2" method="post">
                             <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
                                 <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
                                     <label for="comment" class="sr-only">Your comment</label>
-                                    <textarea id="comment" rows="4" class="w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="댓글은 여기에 작성해주세요" required></textarea>
+                                    <textarea id="comment" name="comment" rows="4" class="w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="댓글은 여기에 작성해주세요" required></textarea>
                                 </div>
                                 <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
                                     <button type="submit" class="inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
@@ -123,18 +127,25 @@
                             </a>
                         </div>
                     </div>
+                         
+                    
+                    <?php foreach($comment_info as $comment) : ?>
+                        <?php $user_id = $comment->user_id; ?>
+                        <?php $content = $comment->comment_content; ?>
+                        <?php $createdate = $comment->create_date; ?>
+                
                     <div name="commnet-answer-area">
                             <div name="title" class="m-5">
                                 
                                 <div class="flex justify-normal">
                                     <div class="flex flex-none">
-                                        <div class="text-base font-bold">tjdwls3144</div>    
-                                        <div class="ml-4">2021-06-12 12:00</div>    
+                                        <div class="text-base font-bold"><?php echo $user_id; ?></div>    
+                                        <div class="ml-4"><?php echo $createdate; ?><br></div>    
                                     </div>
                                     <div class="grow"></div>
                                 </div>
                                 <div class="flex">                                   
-                                     <div class="mt-4">댓글입니다. ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</div>                                     
+                                     <div class="mt-4"><?php echo $content; ?><br></div>                                     
                                 </div>
                                 <div class="flex justify-between">
                                     <div class="mt-4 text-sm">댓글쓰기</div>
@@ -150,78 +161,11 @@
                             </div>
                             
                     </div>
+                    <hr>
 
 
-                    <div name="commnet-area" class="bg-base-200">
-                        <div name="title" class="m-5 flex">
-                            <div>
-                                ┗
-                            </div>
-                            <div class="ml-2 flex-grow"> <!-- flex-grow를 사용하여 맨 오른쪽까지 확장 -->
-                                <div class="flex justify-normal">
-                                    <div class="flex flex-none">
-                                        <div class="text-base font-bold">kakzzzz</div>    
-                                        <div class="ml-4">2021-06-12 12:00</div>    
-                                    </div>
-                                    <div class="grow"></div>
-                                </div>
-                                <div class="flex mt-2">             
-                                    <div class="">댓글쓰는곳인데 웃고만있네</div>
-                                </div>
-                                <div class="flex justify-between">
-                                    <div class="flex mt-2 text-sm">
-                                        <div>
-                                            댓글쓰기
-                                        </div>
-                                        <div>
-                                        <a class="mt-4 ml-4 text-sm text-red-500">댓글보기</a>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="flex justify-end">
-                                        <a class="mt-4 text-sm">수정하기</a>
-                                        <a class="mt-4 ml-4 text-sm">삭제하기</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div name="commnet-area" class="bg-base-200">
-                        <div name="title" class="m-5 flex">
-                            <div>
-                                ┗
-                            </div>
-                            <div class="ml-2 flex-grow"> <!-- flex-grow를 사용하여 맨 오른쪽까지 확장 -->
-                                <div class="flex justify-normal">
-                                    <div class="flex flex-none">
-                                        <div class="text-base font-bold">admin</div>    
-                                        <div class="ml-4">2021-06-12 12:00</div>    
-                                    </div>
-                                    <div class="grow"></div>
-                                </div>
-                                <div class="flex mt-2">             
-                                    <div class="">다 정지 시켜버린다?</div>
-                                </div>
-                                <div class="flex justify-between">
-                                    <div class="flex mt-2 text-sm">
-                                        <div>
-                                            댓글쓰기
-                                        </div>
-                                        <div>
-                                        <a class="mt-4 ml-4 text-sm text-red-500">댓글보기</a>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="flex justify-end">
-                                        <a class="mt-4 text-sm">수정하기</a>
-                                        <a class="mt-4 ml-4 text-sm">삭제하기</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+              
+             <?php endforeach; ?>
 
                     
 

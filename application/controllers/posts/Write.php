@@ -67,6 +67,8 @@ class Write extends CI_Controller {
 
 
 
+
+
     
 }
 ?>

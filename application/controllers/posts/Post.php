@@ -20,26 +20,38 @@ class Post extends CI_Controller {
     }
     
 
-    public function detail($post_id){
-
-
-        if (!empty($post_id)){
-
+    public function detail($post_id) {
+        $data = array();
+    
+        if (!empty($post_id)) {
+            // 게시물 세부 정보 가져오기
             $detail_info  = $this->Post_model->find_detail($post_id);
-
-            if ($detail_info){
-
+            if ($detail_info) {
                 $data['detail_info'] = $detail_info;
-
-                $this->load->view('posts/post_detail_view',$data);
-
             } else {
-
-                echo "찾지못함";
+                echo "찾지 못함";
+                return; 
             }
+    
+            // 댓글 정보 가져오기
+            $comments = $this->Post_model->get_comment($post_id);
+            $data['comment_info'] = $comments;
         }
+    
+        // 댓글 저장
+        if ($this->input->post()) {
+            $comment_content = $this->input->post('comment');
+            $user_id = $this->session->userdata('user_id');
+            $this->Post_model->create_comment($post_id, $comment_content, $user_id);
+    
+            // 페이지 새로고침 또는 리디렉트
+            redirect('posts/free/'.$post_id); // 상세 페이지로 리디렉트하여 새 댓글 표시
+        }
+    
+        // 최종적으로 단일 뷰 로드
+        $this->load->view('posts/post_detail_view', $data);
     }
-
+    
     
     
 }
