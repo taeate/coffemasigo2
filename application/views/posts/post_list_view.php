@@ -1,17 +1,17 @@
 <?php $this->load->view('layout/header'); ?>
 
-<div class="flex-container" style="display: flex; margin: 400px;">
-   
+<div class="flex-container" style="display: flex; margin-left: 400px; margin-right: 400px; margin-top: 320px;">
+
 <!-- 사이드바 -->
 <div class="w-80">
     <?php $this->load->view('layout/sidebar'); ?>
 </div>
     
     <!-- 리스트 페이지 컨텐츠 -->
-    <div class="content ml-8 z-10" style="flex: 3;">
+    <div id="content" class="contentbox ml-8 z-10" style="flex: 3;" >
 
         <div name="top-box" class="flex flex-col w-full">
-            <div name="search-nav" class="h-auto bg-base-100 place-items-center">
+            <div name="search-nav" class="searchbox h-auto bg-base-100 place-items-center shadow-md">
 
                 <div class="m-4">
                     <div class="flex justify-between w-full">
@@ -139,7 +139,7 @@
             
         </div>
     </div>
-        <body class="mt-96  bg-base-300">
+        <body class="  bg-base-300">
             <!-- 리스트 페이지의 내용 -->
                 <div class="bg-base-100 mt-4">
                     <div class="overflow-x-auto shadow-md">
@@ -245,4 +245,52 @@
         });
     });
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const navbar = document.querySelector('nav');
+    const search = document.querySelector('.searchbox');
+    const sidebar = document.querySelector('.sidebarbox');
+
+    // 원래 sidebar의 너비 계산
+    const originalSidebarWidth = sidebar.offsetWidth + 'px';
+    const originalSearchWidth = search.offsetWidth + 'px';
+
+    if (navbar && content && sidebar) {
+
+        const navbarHeight = navbar.offsetHeight;
+        const contentTop = content.getBoundingClientRect().top + window.scrollY - navbarHeight;
+
+        window.addEventListener('scroll', function(){
+            if(window.scrollY >= contentTop){
+                sidebar.classList.add('fixed');
+                search.classList.add('fixed');
+                sidebar.style.top = `${navbarHeight}px`;
+                search.style.top = `${navbarHeight}px`;
+
+                sidebar.style.width = originalSidebarWidth; 
+                search.style.width = originalSearchWidth; // 고정 상태에서 원래 너비 적용
+            } else {
+                sidebar.classList.remove('fixed');
+                sidebar.style.top = '';
+                sidebar.style.width = ''; // 너비 스타일 제거
+
+                 // searchbox 스타일 초기화
+                search.classList.remove('fixed');
+                search.style.top = '';
+                search.style.width = '';
+                search.style.zIndex = '50';
+                search.style.backgroundColor = '';
+            }
+        });
+    } 
+});
+
+
+
+
+
+
+
+
 </script>

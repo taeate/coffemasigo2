@@ -1,5 +1,5 @@
 
-<div class=" bg-base-100 h-auto w-auto rounded">
+<div class=" bg-base-100 h-auto w-auto rounded sidebarbox">
     <div name="sidebar-container" class="rounded">
         <div class=" bg-base-100 h-auto flex">
             <div class="flex mt-12 ml-8">

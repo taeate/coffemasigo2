@@ -19,7 +19,7 @@
     
 
 </head>
-<nav class="flex fixed top-0 w-full z-50">
+<nav class="flex fixed top-0 w-full z-50 headerbox">
 <div class="navbar bg-gray-700 h-10 relative">
     <div class="navbar-start">
         <div class="dropdown">
