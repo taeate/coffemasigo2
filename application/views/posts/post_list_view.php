@@ -11,7 +11,7 @@
     <div id="content" class="contentbox ml-8 z-10" style="flex: 3;" >
 
         <div name="top-box" class="flex flex-col w-full">
-            <div name="search-nav" class="searchbox h-auto bg-base-100 place-items-center shadow-md">
+            <div name="search-nav" class="searchbox z-30 h-auto bg-base-100 place-items-center shadow-md">
 
                 <div class="m-4">
                     <div class="flex justify-between w-full">
@@ -206,11 +206,16 @@
                             </tbody>
                         
                             </table>
+                            
                             <div class="mt-6 mb-6">
                                 <div class="flex justify-center">
-                                <button class="bg-gray-600 text-white w-20 h-8 rounded-lg mr-2">이전</button>
-                                <button class="bg-gray-600 text-white w-20 h-8 rounded-lg ml-2">다음</button>
+                                
+                                <div class="pagination mt-4">
+                                    <?php echo $link; ?><br>
+                                    
+                                                
                                 </div>
+
                                 
                             </div>
                                 

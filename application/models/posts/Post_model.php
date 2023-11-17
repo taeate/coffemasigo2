@@ -3,11 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Post_model extends CI_Model {
 
-    public function get_posts(){
+    public function get_posts($start,$limit){
       
         $this->db->select('*');
         $this->db->where('delete_status', FALSE);
         $this->db->where('parent_post_id', null);
+        $this->db->limit($limit, $start);
         $query = $this->db->get('post');
         return $query->result();
 
@@ -70,5 +71,13 @@ class Post_model extends CI_Model {
         $this->db->where('post_id', $post_id);
         $this->db->from('comment');;
         return $this->db->count_all_results();
+    }
+
+    public function count_posts(){
+        
+        $this->db->select('*');
+        $this->db->where('delete_status', FALSE);
+        $this->db->where('parent_post_id', null);
+        return $this->db->count_all_results('post');
     }
 }

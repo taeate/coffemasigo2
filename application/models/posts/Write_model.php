@@ -64,5 +64,7 @@ class Write_model extends CI_Model {
       
         
     }
+
+   
     
 }

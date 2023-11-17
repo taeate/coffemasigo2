@@ -8,11 +8,44 @@ class Post extends CI_Controller {
         $this->load->database();
         $this->load->helper('url');
         $this->load->library('session'); // 세션 라이브러리 로드
+        $this->load->library('pagination'); // 페이지네이션 로드
+
     }
     
     public function index() {
+
+        //페이지네이션 설정
+        $config = array();
+        $config['base_url'] = site_url('posts/all/page/');
+        $config['first_url'] = site_url('posts/all/page/1');
+        $config['total_rows'] = $this->Post_model->count_posts(); // 총 게시물수
+        $config['per_page'] = 30; // 페이지당 게시물수
+        $config['num_links'] = FALSE;
+        $config['use_page_numbers'] = TRUE;
+        $config['prev_link'] = '<button class="bg-gray-600 text-white w-20 h-10 rounded-lg mr-2">이전</button>';
+        $config['next_link'] = '<button class="bg-gray-600 text-white w-20 h-10 rounded-lg ml-2">다음</button>';
+        $config['last_link'] = FALSE;
+        $config['first_link'] = FALSE;
+        $config['display_pages'] = FALSE;
         
-        $data['get_list'] = $this->Post_model->get_posts();
+
+        //초기화
+        $this->pagination->initialize($config);
+
+        //현재페이지 번호 계싼
+        $page = $this->uri->segment(4) ? $this->uri->segment(4) : 1;
+
+
+        //오프셋계산
+        $start = ($page - 1) * $config['per_page'];
+
+    
+    
+        //게시물 목록 가져오기      
+        $data['get_list'] = $this->Post_model->get_posts($start,$config['per_page']);
+
+         // 페이지네이션 링크 생성
+        $data['link'] = $this->pagination->create_links();
 
         $data['get_answer_list'] = $this->Post_model->get_answer_posts();
     
