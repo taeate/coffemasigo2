@@ -89,6 +89,21 @@ class Post extends CI_Controller {
         $this->load->view('posts/post_detail_view', $data);
     }
     
+
+
+    public function search() {
+
+        
+        // URL 매개변수에서 검색어와 검색 대상 가져오기
+        $search_info = $this->input->get('search');
+
+        // $search_target = $this->input->get('search_target');
+    
+        // 검색 결과 가져오기
+        $data['search_data'] = $this->Post_model->search($search_info);
+    
+        $this->load->view('posts/post_list_view', $data);
+    }
     
     
 }

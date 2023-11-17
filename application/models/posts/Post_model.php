@@ -80,4 +80,14 @@ class Post_model extends CI_Model {
         $this->db->where('parent_post_id', null);
         return $this->db->count_all_results('post');
     }
+
+    public function search($search_info){
+        $this->db->select('*');
+        $this->db->from('post');
+        $this->db->like('title', $search_info);
+        $this->db->or_like('content', $search_info);
+        $query = $this->db->get();
+        echo $this->db->last_query(); 
+        return $query->result_array();
+    }
 }

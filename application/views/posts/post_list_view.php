@@ -45,8 +45,12 @@
                     </div>
 
 
-                    <div name="serarch" class="w-68 ml-4">   
-                            <form>
+                    <div name="" class="w-68 ml-4">
+                    <!-- <form action="<?php echo base_url('posts/search'); ?>" method="get">
+                            <input type="text" name="search" id="search" placeholder="서치">
+                            <button type="submit">버튼</button>
+                    </form> -->
+                            <form  action="<?php echo base_url('posts'); ?>" method="get">
                                 <div class="flex">
                                     <label for="location-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Your Email</label>
                                     <button id="dropdown-button-2" data-dropdown-toggle="dropdown-search-city" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600" type="button">
@@ -90,13 +94,15 @@
                                         </ul>
                                     </div>
                                     <div class="relative w-full">
-                                        <input type="search" id=location-search" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="검색" required>
+                                       
+                                        <input type="text" name="search" id="search"  class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="검색" required>
                                         <button type="submit" class="absolute top-0 end-0 h-full p-2.5 text-sm font-medium text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                             <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                                             </svg>
                                             <span class="sr-only">Search</span>
                                         </button>
+                                     
                                     </div>
                                 </div>
                             </form>
@@ -110,7 +116,7 @@
             </div> 
 
         <!-- <div class="grid h-20 card bg-base-300 rounded-box place-items-center mt-4">랭킹</div> -->
-        <div class="flex shadow mt-4 bg-base-100"> <!--랭킹바 -->
+        <div name="rankingbar" class="flex shadow mt-4 bg-base-100"> <!--랭킹바 -->
   
             <div class="stat border-r">
                 <div class="stat-figure text-primary">
@@ -139,22 +145,64 @@
             
         </div>
     </div>
+
+
+
+
+    
         <body class="  bg-base-300">
             <!-- 리스트 페이지의 내용 -->
                 <div class="bg-base-100 mt-4">
                     <div class="overflow-x-auto shadow-md">
                             <table class="table">
-                                <!-- head -->
-                                <tbody>
-                                <?php foreach($get_list as $post): ?>
+                            <?php if(!empty($search_data)): ?>
                                 
-                                  
+                               <tbody name="search-body">
+                   
+                                        <?php foreach($search_data as $post): ?>
+                                    <!-- 검색 결과 게시물 표시 -->
+                                    <tr class="border-b border-l border-r border-t hover:bg-gray-200 h-20" onclick="window.location.href='/posts/free/<?=$post['post_id']?>'">
+                                            <th class="w-32">
+                                                <div class="flex flex-col items-center">
+                                                    <label for="" class="">▲</label>
+                                                    <div class="">12</div>
+                                                </div>
+                                            </th>
+
+                                            <td>
+                                                <div class="flex items-center gap-3 ml-4">
+                                                    <div>
+                                                        <div class="font-bold"><?php echo $post['title']; ?> [5]</div>
+                                                        <div class="flex mt-1">
+                                                            <div class="text-sm opacity-50">채널이름</div>
+                                                            <!-- <a class="view-replies ml-2 text-red-500 hover:text-blue-500 hover:font-bold hover:cursor-pointer" data-post-id="<?=$post->post_id?>">답글보기</a> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div><?php echo $post['user_id']  ?></div>
+                                            </td>
+                                            <td><?php echo $post['views'] ?></td>
+                                            <th>
+                                                <div class="text-sm"><?php echo $post['create_date']  ?></div>
+                                            </th>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                     <!-- 검색 결과 게시물 표시 끝 -->
+                               </tbody>
+                            <?php else: ?>
+                                <tbody name="posts-body">
+                                <?php foreach($get_list as $post): ?>       
                                         <!-- 메인 게시물 -->
                                         <tr class="border-b border-l border-r border-t hover:bg-gray-200 h-20" onclick="window.location.href='/posts/free/<?=$post->post_id?>'">
-                                            <th class="w-12">
-                                                <label for="" class="ml-7">▲</label>
-                                                <div class="ml-4">1233</div>
+                                            <th class="w-32">
+                                                <div class="flex flex-col items-center">
+                                                    <label for="" class="">▲</label>
+                                                    <div class="">12</div>
+                                                </div>
                                             </th>
+
                                             <td>
                                                 <div class="flex items-center gap-3 ml-4">
                                                     <div>
@@ -174,6 +222,7 @@
                                                 <div class="text-sm"><?php echo $post->create_date; ?></div>
                                             </th>
                                         </tr>
+                                        <!-- 메인게시물 끝 -->
 
                                         <!-- 관련 답변 게시물 -->
                                         <?php foreach($get_answer_list as $answer_post): ?>
@@ -199,18 +248,17 @@
                                                 </tr>
                                             <?php endif; ?>
                                         <?php endforeach; ?>
-                                  
-                                
-                            <?php endforeach; ?>
+                                    <?php endforeach; ?>
+                                </tbody>
 
-                            </tbody>
-                        
+
+                            <?php endif; ?>
                             </table>
                             
                             <div class="mt-6 mb-6">
                                 <div class="flex justify-center">
                                 
-                                <div class="pagination mt-4">
+                                <div class="pagination">
                                     <?php echo $link; ?><br>
                                     
                                                 
