@@ -87,7 +87,7 @@ class Post_model extends CI_Model {
         $this->db->like('title', $search_info);
         $this->db->or_like('content', $search_info);
         $query = $this->db->get();
-        echo $this->db->last_query(); 
+         
         return $query->result_array();
     }
 }

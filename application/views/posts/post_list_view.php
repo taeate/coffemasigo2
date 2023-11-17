@@ -46,11 +46,8 @@
 
 
                     <div name="" class="w-68 ml-4">
-                    <!-- <form action="<?php echo base_url('posts/search'); ?>" method="get">
-                            <input type="text" name="search" id="search" placeholder="서치">
-                            <button type="submit">버튼</button>
-                    </form> -->
-                            <form  action="<?php echo base_url('posts'); ?>" method="get">
+                  
+                            <form  action="<?php echo base_url('posts/search'); ?>" method="get">
                                 <div class="flex">
                                     <label for="location-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Your Email</label>
                                     <button id="dropdown-button-2" data-dropdown-toggle="dropdown-search-city" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600" type="button">
