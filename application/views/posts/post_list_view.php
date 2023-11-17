@@ -155,7 +155,7 @@
                             <?php if(!empty($search_data)): ?>
                                 
                                <tbody name="search-body">
-                   
+                                    
                                         <?php foreach($search_data as $post): ?>
                                     <!-- 검색 결과 게시물 표시 -->
                                     <tr class="border-b border-l border-r border-t hover:bg-gray-200 h-20" onclick="window.location.href='/posts/free/<?=$post['post_id']?>'">

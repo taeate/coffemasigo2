@@ -101,9 +101,10 @@ class Post extends CI_Controller {
 
          // 페이지네이션 링크 없음
         $data['link'] = '';
-        
+
         // 검색 결과 가져오기
         $data['search_data'] = $this->Post_model->search($search_info);
+        $data['get_list'] = array();
     
         $this->load->view('posts/post_list_view', $data);
     }
