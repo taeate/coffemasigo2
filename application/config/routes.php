@@ -58,8 +58,8 @@ $route['posts/all'] = 'posts/Post';
 $route['posts'] = 'posts/Post';
 $route['posts/free/(:num)'] = 'posts/Post/detail/$1';
 $route['write/(:num)'] = 'post/write/answer_post/$1';
-$route['posts/edit/(:num)'] = 'posts/post/write/post_edit/$1';
-$route['posts/delete/(:num)'] = 'posts/post/write/post_delete/$1';
+$route['posts/edit/(:num)'] = 'posts/write/post_edit/$1';
+$route['posts/delete/(:num)'] = 'posts/write/post_delete/$1';
 $route['posts/all/page/(:num)'] = 'posts/post/index/$1';
 $route['posts/search'] = 'posts/post/search';
 

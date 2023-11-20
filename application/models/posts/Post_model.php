@@ -81,13 +81,16 @@ class Post_model extends CI_Model {
         return $this->db->count_all_results('post');
     }
 
-    public function search($search_info){
+    public function search($search_info,$start, $limit){
         $this->db->select('*');
         $this->db->from('post');
         $this->db->like('title', $search_info);
         $this->db->or_like('content', $search_info);
+        $this->db->limit($limit,$start);
         $query = $this->db->get();
          
         return $query->result_array();
     }
+
+
 }

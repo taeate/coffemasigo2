@@ -155,7 +155,7 @@
                             <?php if(!empty($search_data)): ?>
                                 
                                <tbody name="search-body">
-                                    
+                               
                                         <?php foreach($search_data as $post): ?>
                                     <!-- 검색 결과 게시물 표시 -->
                                     <tr class="border-b border-l border-r border-t hover:bg-gray-200 h-20" onclick="window.location.href='/posts/free/<?=$post['post_id']?>'">
@@ -185,10 +185,26 @@
                                                 <div class="text-sm"><?php echo $post['create_date']  ?></div>
                                             </th>
                                         </tr>
+                                      
+
                                     <?php endforeach; ?>
-                                     <!-- 검색 결과 게시물 표시 끝 -->
+                                  
+                                     
                                </tbody>
-                            <?php else: ?>
+                               <!-- 검색 결과 없을때  표시  -->
+                                <?php else: ?>
+
+                                    <?php if(isset($no_results)): ?>
+                                        <div class="flex justify-center mt-4 font-bold text-lg">
+                                            <?php echo $no_results; ?>
+                                        </div>
+                                    <?php endif; ?>
+
+                                <?php endif; ?>
+
+                                <!-- 검색 결과 게시물 표시 끝 -->
+
+
                                 <tbody name="posts-body">
                                 <?php foreach($get_list as $post): ?>       
                                         <!-- 메인 게시물 -->
@@ -249,7 +265,7 @@
                                 </tbody>
 
 
-                            <?php endif; ?>
+                     
                             </table>
                             
                             <div class="mt-6 mb-6">
@@ -335,12 +351,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     } 
 });
-
-
-
-
-
-
-
-
 </script>
+
+
+
+
+
+
