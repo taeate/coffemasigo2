@@ -19,7 +19,7 @@ class Post extends CI_Controller {
         $config['base_url'] = site_url('posts/all/page/');
         $config['first_url'] = site_url('posts/all/page/1');
         $config['total_rows'] = $this->Post_model->count_posts(); // 총 게시물수
-        $config['per_page'] = 30; // 페이지당 게시물수
+        $config['per_page'] = 11; // 페이지당 게시물수
         $config['num_links'] = FALSE;
         $config['use_page_numbers'] = TRUE;
         $config['prev_link'] = '<button class="bg-gray-600 text-white w-20 h-10 rounded-lg mr-2">이전</button>';
@@ -128,11 +128,6 @@ class Post extends CI_Controller {
          $start = ($page - 1) * $config['per_page'];
 
         
-        
-         $data['search_data'] = $this->Post_model->search($search_info, $start, $config['per_page']);
-
- 
-        
 
         // $search_target = $this->input->get('search_target');
 
@@ -140,9 +135,11 @@ class Post extends CI_Controller {
         
          // 페이지네이션 링크 없음
         $data['link'] = $this->pagination->create_links();
+        
 
         // 검색 결과 가져오기
-        $data['search_data'] = $this->Post_model->search($search_info,$start,$config['per_page']);
+        $data['search_data'] = $this->Post_model->search($search_info, $start, $config['per_page']);
+
 
         if (empty($data['search_data'])) {
             $data['no_results'] = "검색결과가 없습니다";
@@ -152,6 +149,15 @@ class Post extends CI_Controller {
         $data['get_list'] = array();
     
         $this->load->view('posts/post_list_view', $data);
+    }
+
+
+
+    public function fetch_replies($post_id){
+
+        $replies = $this->Post_model->get_replies($post_id);
+
+        echo json_encode($replies);
     }
     
     
